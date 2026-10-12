@@ -37,6 +37,16 @@ pytest -v --html=reports/report.html --self-contained-html
 ```
 Run only quick checks with `pytest -m smoke`.
 
+## Coverage
+| Area | Tests | What is checked |
+|---|---|---|
+| Pet | create, get, update, delete, find by status | CRUD flow, schema validation, status filtering |
+| Store | place, get, delete order, inventory, unknown order | Order lifecycle, schema validation, error codes |
+| User | create, get, update, delete, login/logout, unknown user | User lifecycle, authentication flow |
+| Negative | invalid IDs, invalid status, missing required fields | Error handling and spec deviations |
+
+**Result:** 25 tests, 23 passing, 2 expected failures (documented bugs).
+
 ## Findings: spec deviations found
 | ID | Endpoint | Spec says | Actual behavior | Severity |
 |---|---|---|---|---|
@@ -47,6 +57,5 @@ Run only quick checks with `pytest -m smoke`.
 Tests run automatically on every push and pull request. The HTML report is attached to each run as a downloadable artifact in the Actions tab.
 
 ## Roadmap
-- Store and user endpoint tests
 - Retry handling for server flakiness
 - Allure reporting
